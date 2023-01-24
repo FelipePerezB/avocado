@@ -1,0 +1,61 @@
+.container{
+  width: 100%;
+  margin: 3rem 0;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title svg{
+  transform: scale(0.9);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.alive svg{
+  animation: avo 0.2s 1 0.8s;
+}
+
+.alive:active svg{
+  transform: scaleY(0.8);
+  transition: transform 0.1s;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem; 
+  margin: 0; 
+}
+
+.question{
+  text-align: center;
+  cursor: pointer;
+  color: rgb(82, 82, 255);
+  font-size: 1.4rem;
+}
+
+@keyframes avo{
+  0%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(0.8);
+  }
+  100%{
+    transform: scaleY(1);
+  }
+}
+
+@media(min-width: 420px){
+  .title{
+    font-size: 4rem;
+  }
+
+  .title svg{
+    transform: scale(1.2)
+  }
+}
