@@ -53,7 +53,7 @@ export default function Cart() {
         <div className={styles.checkout}>
           <p>
             <span className={styles.subtitle}>Total:</span>
-            <span> ${total}</span>
+            <span> ${total.toFixed(3)}</span>
           </p>
           <button>Check out</button>
         </div>

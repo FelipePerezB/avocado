@@ -38,6 +38,7 @@
 }
 
 .quantity {
+  display: flex;
   margin: 1rem 0;
   height: 2.4rem;
 }
