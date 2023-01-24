@@ -18,9 +18,9 @@ export interface TProduct {
   attributes: TProductAttributes;
 }
 
-type TAPIAVODetailResponse = TProduct
+export type TAPIAVODetailResponse = TProduct
 
-interface TAPIAvoResponse {
+export interface TAPIAvoResponse {
   lenght: number
   data: TProduct[]
   error?: string

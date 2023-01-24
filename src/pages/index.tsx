@@ -1,23 +1,26 @@
-import { TProduct } from "@models/products.model";
+import { TAPIAvoResponse, TProduct } from "@models/products.model";
 import { CardMedia, Typography } from "@mui/material";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "@styles/Home.module.css";
 import AvoInfo from "@src/components/AvoInfo";
 
-export default function Index() {
-  const [products, setProducts] = useState<TProduct[]>();
-  useEffect(() => {
-    fetch("api/avo")
-      .then((res) => res.json())
-      .then(({ data }) => setProducts(data))
-      .catch((err) => console.error(err));
-  }, []);
+export const getServerSideProps = async () => {
+	const response = await fetch('https://avocado-beige.vercel.app/api/avo')
+  const { data: productList }: TAPIAvoResponse = await response.json()
+  return {
+    props: {
+      productList,
+    },
+  }
+}
+
+export default function Index({ productList }: { productList: TProduct[] }) {
   return (
     <div className={styles.container}>
       <AvoInfo />
       <div className={styles["product-list"]}>
-        {products?.map((product) => {
+        {productList?.map((product) => {
           let { description } = product.attributes;
           if (description.length > 150) {
             description = description.substring(0, 150) + "... read more";
